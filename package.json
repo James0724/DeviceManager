@@ -4,9 +4,9 @@
 	"description": "Device manager",
 	"main": "server.js",
 	"scripts": {
-		"start": "node backend/server.js",
-		"dev": "SET NODE_ENV=DEVELOPMENT& nodemon backend/server",
-		"prod": "SET NODE_ENV=PRODUCTION& nodemon backend/server",
+		"start": "node Backend/server.js",
+		"dev": "SET NODE_ENV=DEVELOPMENT& nodemon Backend/server",
+		"prod": "SET NODE_ENV=PRODUCTION& nodemon Backend/server",
 		"heroku-postbuild": "set NPM_CONFIG_PRODUCTION=false && npm install --prefix Frontend && npm run build --prefix Frontend"
 	},
 	"author": "james kahoro",
