@@ -4,7 +4,7 @@
 	"description": "Device manager",
 	"main": "server.js",
 	"scripts": {
-		"start": "nodemon backend/server.js",
+		"start": "node backend/server.js",
 		"dev": "SET NODE_ENV=DEVELOPMENT& nodemon backend/server",
 		"prod": "SET NODE_ENV=PRODUCTION& nodemon backend/server",
 		"heroku-postbuild": "set NPM_CONFIG_PRODUCTION=false && npm install --prefix frontend && npm run build --prefix frontend"
