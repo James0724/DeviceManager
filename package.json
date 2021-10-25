@@ -7,7 +7,7 @@
 		"start": "node backend/server.js",
 		"dev": "SET NODE_ENV=DEVELOPMENT& nodemon backend/server",
 		"prod": "SET NODE_ENV=PRODUCTION& nodemon backend/server",
-		"heroku-postbuild": "set NPM_CONFIG_PRODUCTION=false && npm install --prefix frontend && npm run build --prefix frontend"
+		"heroku-postbuild": "set NPM_CONFIG_PRODUCTION=false && npm install --prefix Frontend && npm run build --prefix Frontend"
 	},
 	"author": "james kahoro",
 	"license": "ISC",
