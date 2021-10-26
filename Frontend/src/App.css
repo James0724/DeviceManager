@@ -1,25 +1,80 @@
 /* ==========================================================================
 NAVBAR
    ========================================================================== */
-
-.navbar-wrapper {
-	display: flex;
-	justify-content: space-between;
-}
-.navsec {
-	background: #6c63ff;
-}
-.nav-right {
+.dashboard-nav {
+	background-color: #6c63ff;
+	height: 70px;
+	position: absolute;
+	left: 240px;
+	right: 0;
+	transition: left 0.3s ease;
+	padding: 5px;
+	z-index: 10;
 	display: flex;
 	align-items: center;
-	position: relative;
-	right: 3rem;
+	justify-content: space-between;
 }
-.user-details {
-	font-size: 18px;
+.user-nav > ul {
+	display: table;
 }
 
-.nav-right::before {
+.user-nav ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.user-nav > ul > li {
+	display: table-cell;
+	position: relative;
+}
+.user-nav > ul > li:before {
+	display: block;
+	content: ' ';
+	width: 1px;
+	height: 24px;
+	top: 50%;
+	margin-top: -12px;
+	background-color: #8b9cb1;
+	position: absolute;
+	left: 0;
+}
+.user-nav > ul > li > a {
+	padding: 0 15px;
+	color: #fff;
+}
+.profile a .img {
+	display: inline-block;
+	width: 30 px;
+	height: 30 px;
+	line-height: 30px;
+	border-radius: 4 px;
+	background-color: #8b9cb1;
+	color: #ffffff;
+	text-align: center;
+	margin-right: 10 px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	vertical-align: middle;
+}
+.profile-dropdown-menu {
+	left: auto;
+	right: 0;
+	min-width: 180px;
+	white-space: normal;
+}
+.profile-dropdown-menu a {
+	padding: 10px 15px;
+}
+.dropdown-menu .dropdown-item:hover {
+	color: #6c63ff;
+}
+
+.dropdown-menu span {
+	cursor: pointer;
+}
+
+/* .nav-right::before {
 	position: absolute;
 	left: -1px;
 	top: 50%;
@@ -28,7 +83,7 @@ NAVBAR
 	height: 30px;
 	margin-top: -15px;
 	content: '';
-}
+} */
 
 /*search Box*/
 
@@ -96,6 +151,7 @@ LOGIN-PAGE
 .caption {
 	position: relative;
 	color: #888;
+	cursor: pointer;
 }
 .caption a {
 	position: relative;
@@ -119,42 +175,51 @@ LOGIN-PAGE
 /* ==========================================================================
 SIDE-BAR
    ========================================================================== */
-.sidebar-wrapper {
-	padding: 2px 1.5rem 1.5rem;
+.sidebar {
+	background-color: #3a4651;
+	width: 240px;
+	padding-bottom: 60px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	-webkit-transition: left 0.3s ease;
+	transition: left 0.3s ease;
+	z-index: 20;
+}
+.sidebar .sidebar-menu {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.sidebar .menu ul,
+a {
+	text-decoration: none;
+	list-style: none;
+}
+.sidebar .menu ul li {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 20px;
+	padding-right: 15px;
+}
+.sidebar .sidebar-menu li:hover {
+	background-color: #2d363f;
+}
+.sidebar .sidebar-menu a:hover {
+	color: #ffffff;
+}
+.sidebar .sidebar-menu a {
+	color: #efeded;
 }
 
-.showitems {
-	background: #6c63ff;
-	display: block;
-	border-radius: 10px;
-}
-.close {
-	display: none;
-}
-.sidebar-title-menu {
-	text-transform: uppercase;
-	font-size: 0.8rem;
-	margin: 0.75rem 0;
-	font-weight: bold;
-	white-space: nowrap;
-	position: relative;
-	cursor: pointer;
-	padding: 1rem;
-	border-radius: 20px;
-}
-.sidebar-title-menu:hover {
-	background: #6c63ff;
-}
-.sidebar-dropdown-items {
-	padding: 1rem;
-}
-.sidebar-item {
-	padding-bottom: 1rem;
-}
-.sidebar-item a {
-	text-decoration: none;
-	color: #fff;
-}
-.sidebar-item:hover a {
-	color: #1105fc;
+/* ==========================================================================
+PAGES SECTIONS
+   ========================================================================== */
+.content {
+	left: 240px;
+	position: absolute;
+	top: 70px;
+	transition: left 0.3s ease;
+	padding: 2rem;
 }

@@ -18,33 +18,55 @@ const Navbar = () => {
 	};
 	return (
 		<>
-			<nav className="navbar-container container-fluid d-flex justify-content-between navsec align-items-center">
-				{/* <div className="navbar-logo" logo-theme="theme6">
-                        <a href="index.html">
-                            <img className="img-fluid" src="./files/assets/images/logo.png" alt="Theme-Logo">
-                        </a>
-                        <a className="mobile-menu" id="mobile-collapse" href="#!">
-                            <i className="feather icon-menu icon-toggle-right"></i>
-                        </a>
-                        <a className="mobile-options waves-effect waves-light">
-                            <i className="feather icon-more-horizontal"></i>
-                        </a>
-                    </div> */}
-
-				<div className="nav-left d-flex">
-					<div className="search-box">
-						<button className="btn-search">
-							<ImSearch />
-						</button>
-						<input
-							type="text"
-							className="input-search"
-							placeholder="Type to Search..."
-						/>
-					</div>
+			<nav className="dashboard-nav">
+				<div className="header-block search-box">
+					<button className="btn-search">
+						<ImSearch />
+					</button>
+					<input
+						type="text"
+						className="input-search"
+						placeholder="Type to Search..."
+					/>
+				</div>
+				<div class="header-block user-nav">
+					<ul class="nav-profile">
+						<li class="profile dropdown">
+							<a
+								class="nav-link dropdown-toggle"
+								id="dropdownMenuButton"
+								data-bs-toggle="dropdown"
+								role="button"
+								aria-expanded="false">
+								{/* <div class="img">
+									<img
+										src={`url("https://avatars3.githubusercontent.com/u/3959008?v=3&amp;s=40")`}
+									/>
+								</div> */}
+								<span class="name">{user.name}</span>
+							</a>
+							<div
+								class="dropdown-menu profile-dropdown-menu"
+								aria-labelledby="dropdownMenuButton">
+								<a class="dropdown-item" href="!#">
+									<AiOutlineUser /> Profile{' '}
+								</a>
+								<a class="dropdown-item" href="!#">
+									<MdImportantDevices /> Device Manager{' '}
+								</a>
+								<a class="dropdown-item" href="!#">
+									<AiFillSetting /> Settings{' '}
+								</a>
+								<div class="dropdown-divider"></div>
+								<span class="dropdown-item" onClick={logoutHandler}>
+									<AiOutlineLogout /> Logout{' '}
+								</span>
+							</div>
+						</li>
+					</ul>
 				</div>
 
-				<div className="nav-right ">
+				{/* <div className="header-block user-nav">
 					<div className="user-details p-3">
 						<AiOutlineUser />
 					</div>
@@ -79,7 +101,7 @@ const Navbar = () => {
 							</span>
 						</div>
 					</div>
-				</div>
+				</div> */}
 			</nav>
 		</>
 	);

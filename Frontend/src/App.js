@@ -6,12 +6,17 @@ import store from './store';
 import './App.css';
 
 // Admin pages
-import Dashboard from './Pages/dashboard';
+import Dashboard from './Pages/dashboardHome';
 import Login from './Components/User/login';
 import Register from './Components/User/register';
 // import Profile from './Components/User/profile';
 import { loadUser } from './Actions/userActions';
 // import updateProfile from './Components/User/updateProfile';
+
+//Pages
+import MyDevices from './Pages/myDevices';
+import TransferDevice from './Pages/transferDevice';
+import AddDevice from './Pages/addDevice';
 
 function App() {
 	const { user, isAuthenticated, loading } = useSelector((state) => state.auth);
@@ -22,10 +27,13 @@ function App() {
 	return (
 		<Router>
 			<Route path="/" component={Login} exact />
-			<ProtectedRoute path="/dashboard" component={Dashboard} exact />
+			<Route path="/register" component={Register} exact />
+			<ProtectedRoute path="/dashboardHome" component={Dashboard} exact />
+			<ProtectedRoute path="/mydevices" component={MyDevices} exact />
+			<ProtectedRoute path="/transferdevice" component={TransferDevice} exact />
+			<ProtectedRoute path="/addDevice" component={AddDevice} exact />
 			{/* <Route path="/device/:id" component={ProductDevaice} exact /> */}
 
-			<Route path="/register" component={Register} />
 			{/* <ProtectedRoute path="/me" component={Profile} exact /> 
 			<ProtectedRoute path="/me/update" component={UpdateProfile} exact /> */}
 			{!loading && (!isAuthenticated || user.role !== 'admin')}

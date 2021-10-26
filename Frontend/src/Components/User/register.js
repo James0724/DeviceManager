@@ -39,7 +39,7 @@ const RegisterModal = (props) => {
 					method="post"
 					onSubmit={submitRegister}>
 					<div className="row">
-						<div className="col">
+						<div className="col-sm-6">
 							<label className="p-2" htmlFor="name">
 								{' '}
 								Name
@@ -76,7 +76,7 @@ const RegisterModal = (props) => {
 								onChange={(e) => setPassword(e.target.value)}
 							/>
 						</div>
-						<div className="col">
+						<div className="col-sm-6 mt-3">
 							<img src={RegisterSvg} alt="Svg" class="img-fluid" />
 						</div>
 						<Button className="p-3 mt-3" type="submit" onClick={submitRegister}>
