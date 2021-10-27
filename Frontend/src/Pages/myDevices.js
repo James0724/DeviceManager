@@ -1,11 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import DashboardLayout from '../Layout/DashboardLayout';
 import Button from 'react-bootstrap/Button';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { myDevices, clearErrors } from '../Actions/deviceActions';
+
 const MyDevices = () => {
-	const [device, setDevice] = useState('');
+	const [devicename, setDevicename] = useState('');
 	const [company, setCompany] = useState('');
 	const [serial, setSerial] = useState('');
+
+	const dispatch = useDispatch();
+	const { loading, error, devices } = useSelector((state) => state.devices);
+	useEffect(() => {
+		dispatch(myDevices());
+		if (error) {
+			toast.warning(error);
+			dispatch(clearErrors());
+		}
+	}, [dispatch, error]);
+
+	const setDevices = devices.map(
+		({ deviceCategory, manufacturer, model, _id }, i) => (
+			<div key={i} className="card">
+				<div className="card-body">
+					<h3>{model}</h3>
+					<h4>{deviceCategory}</h4>
+					<h5>{manufacturer}</h5>
+					<h5>{_id}</h5>
+				</div>
+			</div>
+		)
+	);
+
+	console.log('devices is ', devices);
 	return (
 		<>
 			<DashboardLayout>
@@ -14,7 +43,7 @@ const MyDevices = () => {
 						<div className="row mt-2">
 							<div className="col-md-6 mt-3">
 								<h2>list Of ur devices</h2>
-								<div className="mydevices"></div>
+								<div className="mydevices">{setDevices}</div>
 							</div>
 							<div className="col-md-6 mt-3 p-2 ">
 								<div className="add-device">
@@ -32,8 +61,8 @@ const MyDevices = () => {
 												className="form-control"
 												id="device"
 												placeholder=" device"
-												value={device}
-												onChange={(e) => setDevice(e.target.value)}
+												value={devicename}
+												onChange={(e) => setDevicename(e.target.value)}
 											/>
 											<label className="p-2" htmlFor="company">
 												Company

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 import {
 	ALL_DEVICES_REQUEST,
@@ -22,17 +23,11 @@ import {
 	CLEAR_ERRORS,
 } from '../Constants/deviceConstants';
 
-export const getDevices = async (dispatch) => {
+export const myDevices = () => async (dispatch) => {
 	try {
 		dispatch({ type: ALL_DEVICES_REQUEST });
 
-		let link = `/api/v1/devices?keyword=${keyword}&page=${currentPage}`;
-
-		// if (category) {
-		// 	link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&category=${category}`;
-		// }
-
-		const { data } = await axios.get(link);
+		const { data } = await axios.get(`/api/v1/mydevices`);
 
 		dispatch({
 			type: ALL_DEVICES_SUCCESS,
@@ -46,29 +41,35 @@ export const getDevices = async (dispatch) => {
 	}
 };
 
-export const newDevice = (formData) => async (dispatch) => {
-	try {
-		dispatch({ type: NEW_DEVICE_REQUEST });
+export const addDevice =
+	(manufacturer, serialNo, model) => async (dispatch) => {
+		try {
+			dispatch({ type: NEW_DEVICE_REQUEST });
 
-		const config = {
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		};
+			const config = {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			};
 
-		const { data } = await axios.post(`/api/v1/device/new`, formData, config);
-
-		dispatch({
-			type: NEW_DEVICE_SUCCESS,
-			payload: data,
-		});
-	} catch (error) {
-		dispatch({
-			type: NEW_DEVICE_FAIL,
-			payload: error.response.data.message,
-		});
-	}
-};
+			const { data } = await axios.post(
+				`/api/v1/device/new`,
+				{ manufacturer, serialNo, model },
+				config
+			);
+			toast.success('Device added sucessfuly');
+			dispatch({
+				type: NEW_DEVICE_SUCCESS,
+				payload: data,
+			});
+		} catch (error) {
+			toast.success(error.response.data.message);
+			dispatch({
+				type: NEW_DEVICE_FAIL,
+				payload: error.response.data.message,
+			});
+		}
+	};
 
 // Delete product (Admin)
 export const deleteDevice = (id) => async (dispatch) => {
@@ -90,7 +91,7 @@ export const deleteDevice = (id) => async (dispatch) => {
 };
 
 // Update Product (ADMIN)
-export const updateProduct = (id, deviceInfo) => async (dispatch) => {
+export const updateDevice = (id, deviceInfo) => async (dispatch) => {
 	try {
 		dispatch({ type: UPDATE_DEVICE_REQUEST });
 

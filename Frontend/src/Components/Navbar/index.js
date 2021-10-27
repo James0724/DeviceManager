@@ -13,7 +13,6 @@ const Navbar = () => {
 	const logoutHandler = () => {
 		localStorage.clear();
 		dispatch(logout());
-		console.log('loggedout');
 		toast.success('Logged out successfully.');
 	};
 	return (

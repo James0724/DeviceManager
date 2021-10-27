@@ -3,8 +3,8 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import {
-	devicesReducer,
-	newDeviceReducer,
+	myDevicesReducer,
+	addDeviceReducer,
 	deviceReducer,
 	deviceDetailsReducer,
 } from './Reducers/deviceReducer';
@@ -17,10 +17,10 @@ import {
 } from './Reducers/userReducer';
 
 const reducer = combineReducers({
-	devices: devicesReducer,
+	devices: myDevicesReducer,
 	device: deviceReducer,
 	devicesDetails: deviceDetailsReducer,
-	newDevice: newDeviceReducer,
+	newDevice: addDeviceReducer,
 	auth: authReducer,
 	user: userReducer,
 	allUsers: allUsersReducer,

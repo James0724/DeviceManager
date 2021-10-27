@@ -1,11 +1,23 @@
 import React, { useState } from 'react';
 import DashboardLayout from '../Layout/DashboardLayout';
 import Button from 'react-bootstrap/Button';
+import { ToastContainer, toast } from 'react-toastify';
+
+import { useDispatch } from 'react-redux';
+import { addDevice } from '../Actions/deviceActions';
 
 const AddDevice = () => {
-	const [device, setDevice] = useState('');
-	const [company, setCompany] = useState('');
-	const [serial, setSerial] = useState('');
+	const [model, setModel] = useState('');
+	const [manufacturer, setManufacturer] = useState('');
+	const [serialNo, setSerialNo] = useState('');
+
+	const dispatch = useDispatch();
+	const submitNewDevice = (e) => {
+		e.preventDefault();
+		console.log(manufacturer, serialNo, model);
+		dispatch(addDevice(manufacturer, serialNo, model));
+	};
+
 	return (
 		<DashboardLayout>
 			<div className="container">
@@ -22,8 +34,8 @@ const AddDevice = () => {
 									className="form-control"
 									id="device"
 									placeholder=" device"
-									value={device}
-									onChange={(e) => setDevice(e.target.value)}
+									value={model}
+									onChange={(e) => setModel(e.target.value)}
 								/>
 								<label className="p-2" htmlFor="company">
 									Company
@@ -33,8 +45,8 @@ const AddDevice = () => {
 									className="form-control"
 									id="company"
 									placeholder="company"
-									value={company}
-									onChange={(e) => setCompany(e.target.value)}
+									value={manufacturer}
+									onChange={(e) => setManufacturer(e.target.value)}
 								/>
 
 								<label className="p-2" htmlFor="serial number">
@@ -45,11 +57,11 @@ const AddDevice = () => {
 									className="form-control"
 									id="serialnumber"
 									placeholder="Enter device serial number"
-									value={serial}
-									onChange={(e) => setSerial(e.target.value)}
+									value={serialNo}
+									onChange={(e) => setSerialNo(e.target.value)}
 								/>
 
-								<Button className="p-3 mt-3" type="submit">
+								<Button className="p-3 mt-3" onClick={submitNewDevice}>
 									submit
 								</Button>
 							</div>
@@ -57,6 +69,7 @@ const AddDevice = () => {
 					</div>
 				</article>
 			</div>
+			<ToastContainer autoClose={3000} />
 		</DashboardLayout>
 	);
 };

@@ -228,14 +228,13 @@ SIDE-BAR
 .sidebar {
 	background-color: #3a4651;
 	width: 240px;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
-	bottom: 0;
+	height: 100%;
 	-webkit-transition: left 0.3s ease;
 	transition: left 0.3s ease;
 	z-index: 20;
-	height: 100%;
 }
 
 .sidebar .sidebar-menu {

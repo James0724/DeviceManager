@@ -23,7 +23,7 @@ import {
 	CLEAR_ERRORS,
 } from '../Constants/deviceConstants';
 
-export const devicesReducer = (state = { devices: [] }, action) => {
+export const myDevicesReducer = (state = { devices: [] }, action) => {
 	switch (action.type) {
 		case ALL_DEVICES_REQUEST:
 		case ADMIN_DEVICES_REQUEST:
@@ -35,7 +35,7 @@ export const devicesReducer = (state = { devices: [] }, action) => {
 		case ALL_DEVICES_SUCCESS:
 			return {
 				loading: false,
-				devices: action.payload.devices,
+				devices: action.payload.device,
 				//deicesCount: action.payload.devicesCount,
 			};
 
@@ -63,7 +63,7 @@ export const devicesReducer = (state = { devices: [] }, action) => {
 	}
 };
 
-export const newDeviceReducer = (state = { device: {} }, action) => {
+export const addDeviceReducer = (state = { devices: {} }, action) => {
 	switch (action.type) {
 		case NEW_DEVICE_REQUEST:
 			return {
